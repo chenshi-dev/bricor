@@ -2,5 +2,20 @@
   "name": "bricor",
   "version": "1.0.0",
   "main": "dist/main.js",
-  "license": "MIT"
+  "license": "MIT",
+  "bin": {
+    "bricor": "dist/main.js"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "commander": "^4.1.1",
+    "cosmiconfig": "^6.0.0",
+    "inquirer": "^7.0.4",
+    "shelljs": "^0.8.3"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^6.5.0",
+    "@types/node": "^13.7.0",
+    "@types/shelljs": "^0.8.6"
+  }
 }

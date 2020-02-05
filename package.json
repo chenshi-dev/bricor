@@ -1,13 +1,13 @@
 {
   "name": "bricor",
-  "version": "1.0.1",
-  "main": "publish/main.min.js",
+  "version": "1.0.2",
+  "main": "dist/main.js",
   "license": "MIT",
   "bin": {
-    "bricor": "publish/main.min.js"
+    "bricor": "dist/main.js"
   },
   "files": [
-    "publish/main.min.js"
+    "dist/**/*"
   ],
   "scripts": {
     "prepare": "gulp compress"

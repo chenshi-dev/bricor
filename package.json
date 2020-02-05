@@ -1,10 +1,16 @@
 {
   "name": "bricor",
   "version": "1.0.0",
-  "main": "dist/main.js",
+  "main": "publish/main.min.js",
   "license": "MIT",
   "bin": {
-    "bricor": "dist/main.js"
+    "bricor": "publish/main.min.js"
+  },
+  "files": [
+    "publish/main.min.js"
+  ],
+  "scripts": {
+    "prepare": "gulp compress"
   },
   "dependencies": {
     "colors": "^1.4.0",
@@ -16,6 +22,9 @@
   "devDependencies": {
     "@types/inquirer": "^6.5.0",
     "@types/node": "^13.7.0",
-    "@types/shelljs": "^0.8.6"
+    "@types/shelljs": "^0.8.6",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.2"
   }
 }

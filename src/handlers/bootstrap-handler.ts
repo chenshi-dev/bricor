@@ -1,7 +1,7 @@
 import { readBricorConfig, logger, BricorConfig } from "../utils";
 import { dirname } from "path";
 import { extractNameFromRepo, concatPath } from "./init-handler";
-import Shell from "shelljs";
+import { exec } from "shelljs";
 
 export async function bootstrapHandler() {
   const results = await readBricorConfig();
@@ -29,9 +29,13 @@ export async function bootstrapHandler() {
       results.filepath
     );
 
-    Shell.exec(`git submodule add ${repo} ${parsedPath}`);
-    Shell.exec(`cd ${parsedPath} && npm link`);
-    Shell.exec(`npm link ${parsedName}`);
+    // fetch repo
+    exec(`git submodule add ${repo} ${parsedPath}`);
+    // link to global
+    exec(`cd ${parsedPath} && npm link`);
+    exec(`npm link ${parsedName}`);
+    // reset submodule  config
+    exec(`git submodule --init --remote ${name}`);
   }
 }
 

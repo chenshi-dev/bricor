@@ -1,6 +1,6 @@
 {
   "name": "bricor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "publish/main.min.js",
   "license": "MIT",
   "bin": {

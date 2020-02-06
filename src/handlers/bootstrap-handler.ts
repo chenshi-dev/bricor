@@ -2,6 +2,7 @@ import { readBricorConfig, logger, BricorConfig } from "../utils";
 import { dirname } from "path";
 import { extractNameFromRepo, concatPath } from "./init-handler";
 import { exec } from "shelljs";
+import { existsSync } from "fs";
 
 export async function bootstrapHandler() {
   const results = await readBricorConfig();
@@ -29,13 +30,22 @@ export async function bootstrapHandler() {
       results.filepath
     );
 
-    // fetch repo
-    exec(`git submodule add ${repo} ${parsedPath}`);
+    // exec init & update when the submodule is not exist
+    if (!existsSync(parsedPath)) {
+      exec("git submodule init");
+      exec("git submodule update");
+    } else {
+      // fetch repo
+      exec(`git submodule add ${repo} ${parsedPath}`);
+    }
+
     // link to global
     exec(`cd ${parsedPath} && npm link`);
     exec(`npm link ${parsedName}`);
-    // reset submodule  config
-    exec(`git submodule --init --remote ${name}`);
+    // reset submodule config
+    exec(`git submodule update --init --remote ${name}`);
+
+    logger.info("bootstrap success!");
   }
 }
 

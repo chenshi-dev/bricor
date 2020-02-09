@@ -3,10 +3,24 @@ import { writeFile } from "fs";
 import { promisify } from "util";
 import { join } from "path";
 
+export type Exec = (ExecItem | string)[];
+
+export interface ExecItem {
+  pkg: string;
+  exec: Exec;
+}
+
+// map <sub pkg name => pkg path>
+export interface SubPkgs {
+  [name: string]: string;
+}
+
 interface BricorConfigItem {
   repo: string;
   name?: string;
   path?: string;
+  exec?: Exec;
+  subPkgs?: SubPkgs;
 }
 
 const CONFIG_NAME = ".bricor.json";

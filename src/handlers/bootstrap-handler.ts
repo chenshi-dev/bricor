@@ -56,16 +56,14 @@ export async function bootstrapHandler() {
       Shell.exec(`git submodule add ${repo} ${parsedPath}`);
     }
 
-    // console.info(parsedSubPkgs);
+    // reset submodule config
+    Shell.exec(`git submodule update --init --remote ${name}`);
 
     // exec instrucs
     parseExec(exec, parsedSubPkgs);
 
     // link to global
     linkModule(parsedSubPkgs);
-
-    // reset submodule config
-    Shell.exec(`git submodule update --init --remote ${name}`);
 
     logger.info("bootstrap success!");
   }

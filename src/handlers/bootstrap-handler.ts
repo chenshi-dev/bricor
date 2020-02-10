@@ -47,9 +47,10 @@ export async function bootstrapHandler() {
     const parsedSubPkgs = parseSubPkgs(subPkgs, path);
 
     // exec init & update when the submodule is not exist
-    if (existsSync(parsedPath)) {
+    if (!existsSync(parsedPath) && existsSync("./.gitmodules")) {
       Shell.exec("git submodule init");
-      Shell.exec("git submodule update");
+      // update all submodules
+      Shell.exec("git submodule update --remote");
     } else {
       // fetch repo
       Shell.exec(`git submodule add ${repo} ${parsedPath}`);

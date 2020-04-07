@@ -8,10 +8,10 @@ Bricor 被设计为 multirepoful 管理项目的 CLI，主要提供自动化脚�
 
 ```shell
 # yarn
-yarn add 
+yarn add bricor -D
 
 # npm
-npm i 
+npm i bricor -D
 ```
 
 ## CLI

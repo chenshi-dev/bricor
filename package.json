@@ -17,7 +17,7 @@
     "commander": "^4.1.1",
     "cosmiconfig": "^6.0.0",
     "inquirer": "^7.0.4",
-    "shelljs": "^0.8.3"
+    "shelljs": "^0.8.5"
   },
   "devDependencies": {
     "@types/inquirer": "^6.5.0",
